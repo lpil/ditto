@@ -9,6 +9,6 @@ defmodule Ditto.Mixfile do
   end
 
   defp deps do
-    []
+    [{:mix_test_watch, ">= 0.0.0", only: :dev}]
   end
 end
