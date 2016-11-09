@@ -1,4 +1,4 @@
-defmodule Sim.MembershipTable.Row do
+defmodule PushGossip.MembershipTable.Row do
   alias __MODULE__
 
   keys = [:heartbeat_num, :updated_at]

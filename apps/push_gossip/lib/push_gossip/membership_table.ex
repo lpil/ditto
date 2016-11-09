@@ -1,4 +1,4 @@
-defmodule Sim.MembershipTable do
+defmodule PushGossip.MembershipTable do
   alias __MODULE__.Row
 
   @enforce_keys [:self, :rows]

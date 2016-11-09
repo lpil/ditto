@@ -1,6 +1,6 @@
-defmodule Sim.MembershipTable.RowTest do
+defmodule PushGossip.MembershipTable.RowTest do
   use ExUnit.Case, async: true
-  alias Sim.MembershipTable.Row
+  alias PushGossip.MembershipTable.Row
 
   describe "update/2" do
     test """

@@ -1,4 +1,4 @@
-defmodule Sim.Config do
+defmodule PushGossip.Config do
   @moduledoc """
   ## Fields:
 
