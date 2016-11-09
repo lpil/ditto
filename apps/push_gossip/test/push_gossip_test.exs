@@ -1,6 +1,6 @@
-defmodule SimTest do
+defmodule PushGossipTest do
   use ExUnit.Case
-  doctest Sim
+  doctest PushGossip
 
   test "the truth" do
     assert 1 + 1 == 2

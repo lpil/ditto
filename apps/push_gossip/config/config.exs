@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :sim, key: :value
+#     config :push_gossip, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:sim, :key)
+#     Application.get_env(:push_gossip, :key)
 #
 # Or configure a 3rd-party app:
 #
