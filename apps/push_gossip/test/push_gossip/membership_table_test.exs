@@ -34,4 +34,29 @@ defmodule PushGossip.MembershipTableTest do
       assert updated.rows.dave == rows.dave
     end
   end
+
+
+  describe "random_row/1" do
+    test """
+    fetches a random row from the table.
+    """ do
+      rows = %{fred: %Row{heartbeat_num: 30, updated_at: System.monotonic_time()},
+               jane: %Row{heartbeat_num: 36, updated_at: 7000},
+               mary: %Row{heartbeat_num: 81, updated_at: 1500},
+               dave: %Row{heartbeat_num: 22, updated_at: 5000}}
+      table = %Table{heartbeat_num: 30, self: :fred, rows: rows}
+      :rand.seed(:exsplus, {1, 1, 1})
+      assert Table.random_row(table) == {:ok, :mary, rows.mary}
+      :rand.seed(:exsplus, {2, 2, 2})
+      assert Table.random_row(table) == {:ok, :jane, rows.jane}
+    end
+
+    test """
+    returns :no_rows when the only row is self.
+    """ do
+      rows = %{fred: %Row{heartbeat_num: 30, updated_at: System.monotonic_time()}}
+      table = %Table{heartbeat_num: 30, self: :fred, rows: rows}
+      assert Table.random_row(table) == :no_rows
+    end
+  end
 end
