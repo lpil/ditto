@@ -4,6 +4,12 @@ defmodule PushGossip.MembershipTable do
   @enforce_keys [:self, :rows]
   defstruct heartbeat_num: 0, self: nil, rows: %{}
 
+  @type node_id :: any
+  @type t :: %__MODULE__{heartbeat_num: non_neg_integer,
+                         rows: %{optional(node_id) => Row.t},
+                         self: node_id}
+
+  @spec new(node_id) :: t
   @doc """
   Construct a new MembershipTable with a prepopulated row for self.
   """
@@ -16,6 +22,7 @@ defmodule PushGossip.MembershipTable do
   end
 
 
+  @spec update_self(t) :: t
   @doc """
   Construct a new MembershipTable with a prepopulated row for self.
   """
