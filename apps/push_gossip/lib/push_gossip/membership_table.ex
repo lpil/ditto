@@ -33,4 +33,18 @@ defmodule PushGossip.MembershipTable do
     rows = %{table.rows | table.self => self}
     %__MODULE__{table | heartbeat_num: self.heartbeat_num, rows: rows}
   end
+
+
+  @spec random_row(t) :: {:ok, node_id, Row.t} | :no_rows
+  @doc """
+  Select a random non-self row from the table.
+  """
+  def random_row(table = %__MODULE__{}) do
+    try do
+      {id, row} = table.rows |> Map.delete(table.self) |> Enum.random()
+      {:ok, id, row}
+    rescue
+      _ in Enum.EmptyError -> :no_rows
+    end
+  end
 end

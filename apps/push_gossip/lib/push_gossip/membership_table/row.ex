@@ -5,7 +5,7 @@ defmodule PushGossip.MembershipTable.Row do
   @enforced_keys keys
   defstruct keys
 
-  @type t :: %__MODULE__{ heartbeat_num: non_neg_integer(), updated_at: integer() }
+  @type t :: %__MODULE__{heartbeat_num: non_neg_integer, updated_at: integer}
 
   @spec update(t, t) :: t
   @doc """
